@@ -14,7 +14,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Week01", "Week01", "{DDD3E0
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HelloWorld", "Period\Week01\HelloWorld\HelloWorld.csproj", "{00F32530-9D28-41C7-9713-1BA3C10B7AD6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SimpleComputing", "Period\Week02\SimpleComputing\SimpleComputing.csproj", "{36B2A626-92ED-4F77-B632-9DADBFA2E868}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SimpleComputing", "Period\Week02\SimpleComputing\SimpleComputing.csproj", "{36B2A626-92ED-4F77-B632-9DADBFA2E868}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Week02", "Week02", "{CC4C8A68-5643-45EC-8B6D-6A53ECA543E1}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -37,6 +39,8 @@ Global
 	GlobalSection(NestedProjects) = preSolution
 		{DDD3E049-30B2-4931-B1BF-B18A40B60D14} = {BCD25A38-7ED8-4196-8575-6BF0794DB093}
 		{00F32530-9D28-41C7-9713-1BA3C10B7AD6} = {DDD3E049-30B2-4931-B1BF-B18A40B60D14}
+		{36B2A626-92ED-4F77-B632-9DADBFA2E868} = {CC4C8A68-5643-45EC-8B6D-6A53ECA543E1}
+		{CC4C8A68-5643-45EC-8B6D-6A53ECA543E1} = {BCD25A38-7ED8-4196-8575-6BF0794DB093}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {8688BB5E-EDF3-4A63-B11A-A4AD09FEC911}
