@@ -45,6 +45,7 @@ namespace Polygon
             }
 
             tbCount.Enabled  = btnGenerate.Enabled = false;
+            tbResult.Text = "";
             progressBar1.Value = 0;
             progressBar1.Maximum = count;
             workerGenerate.RunWorkerAsync(count);
