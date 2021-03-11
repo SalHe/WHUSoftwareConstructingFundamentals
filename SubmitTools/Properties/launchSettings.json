@@ -1,0 +1,9 @@
+{
+  "profiles": {
+    "SubmitTools": {
+      "commandName": "Project",
+      "commandLineArgs": "pack --week 1 --project HelloWorld",
+      "workingDirectory": "C:\\Users\\SalHe\\source\\repos\\WHUSoftwareConstructingFundamentals"
+    }
+  }
+}
