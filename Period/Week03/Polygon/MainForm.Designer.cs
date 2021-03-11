@@ -52,7 +52,7 @@ namespace Polygon
             this.tbCount.Name = "tbCount";
             this.tbCount.Size = new System.Drawing.Size(218, 27);
             this.tbCount.TabIndex = 1;
-            this.tbCount.Text = "29";
+            this.tbCount.Text = "10";
             // 
             // btnGenerate
             // 

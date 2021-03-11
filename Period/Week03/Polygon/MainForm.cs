@@ -20,6 +20,8 @@ namespace Polygon
 
         private readonly IList<RandomShapeGenerator> generators;
 
+        private double totalArea;
+
         public MainForm()
         {
             InitializeComponent();
@@ -50,13 +52,16 @@ namespace Polygon
 
         private void workerGenerate_DoWork(object sender, DoWorkEventArgs e)
         {
+            totalArea = 0;
             var count =(int) e.Argument;
             for (int i = 0; i < count; i++)
             {
                 var generator = generators[random.Next(0, generators.Count)];
                 IShape shape = generator();
                 // workerGenerate.ReportProgress((int)((double) (i + 1) / count * 100), shape);
-                workerGenerate.ReportProgress(i, shape);
+                workerGenerate.ReportProgress(i+1, shape);
+                if(shape.IsValid)
+                    totalArea += shape.Area;
             }
         }
 
@@ -73,6 +78,9 @@ namespace Polygon
         private void workerGenerate_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
             tbCount.Enabled = btnGenerate.Enabled = true;
+            //progressBar1.Value = progressBar1.Maximum;
+            tbResult.AppendText("\r\n");
+            tbResult.AppendText($"有效图形的总面积{totalArea:F}");
         }
     }
 }
