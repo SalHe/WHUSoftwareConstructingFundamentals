@@ -42,6 +42,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Week07", "Week07", "{5610C4
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Calculator", "Period\Week07\Calculator\Calculator.csproj", "{610B6F91-7852-4B25-95D1-89D965D58A26}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CayleyTree", "Period\Week07\CayleyTree\CayleyTree.csproj", "{35E7198B-08AE-4906-A755-08188170948D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -84,6 +86,10 @@ Global
 		{610B6F91-7852-4B25-95D1-89D965D58A26}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{610B6F91-7852-4B25-95D1-89D965D58A26}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{610B6F91-7852-4B25-95D1-89D965D58A26}.Release|Any CPU.Build.0 = Release|Any CPU
+		{35E7198B-08AE-4906-A755-08188170948D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{35E7198B-08AE-4906-A755-08188170948D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{35E7198B-08AE-4906-A755-08188170948D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{35E7198B-08AE-4906-A755-08188170948D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -104,6 +110,7 @@ Global
 		{CD185916-AE52-4100-AF43-BB818E7EBDBF} = {0160F564-C47D-4C98-BF9C-3BB98772C6BF}
 		{5610C457-EED7-4313-937B-9CC83946D672} = {BCD25A38-7ED8-4196-8575-6BF0794DB093}
 		{610B6F91-7852-4B25-95D1-89D965D58A26} = {5610C457-EED7-4313-937B-9CC83946D672}
+		{35E7198B-08AE-4906-A755-08188170948D} = {5610C457-EED7-4313-937B-9CC83946D672}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {8688BB5E-EDF3-4A63-B11A-A4AD09FEC911}
