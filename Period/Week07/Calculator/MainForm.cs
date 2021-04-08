@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
@@ -14,6 +15,7 @@ namespace Calculator
     public partial class MainForm : Form
     {
         private CalculationNode _calculationTree;
+        private CalculationNode _currentCalculationNode;
         private bool _isFirstOperandOver = false;
         private Dictionary<string, CalculationNode.CalculationOperator> _operators;
         private readonly StringBuilder _inputNumber = new StringBuilder();
@@ -22,8 +24,7 @@ namespace Calculator
         {
             InitializeComponent();
             BindBtnEvent();
-
-            _calculationTree = new CalculationNode();
+            Clear(null, null);
         }
 
         private void BindBtnEvent()
@@ -56,13 +57,7 @@ namespace Calculator
                 button.Text = numOrOp;
                 if (numOrOp == "Clear")
                 {
-                    button.Click += (sender, args) =>
-                    {
-                        _inputNumber.Length = 0;
-                        _isFirstOperandOver = false;
-                        tbDisplay.Text = "";
-                        _calculationTree = new CalculationNode();
-                    };
+                    button.Click += Clear;
                 }
                 else
                 {
@@ -72,7 +67,7 @@ namespace Calculator
                         try
                         {
                             var ans = _calculationTree.ActualValue;
-                            Text = ans.ToString();
+                            Text = ans.ToString(CultureInfo.CurrentCulture);
                         }
                         catch (ArithmeticException e)
                         {
@@ -91,6 +86,14 @@ namespace Calculator
             };
         }
 
+        private void Clear(object sender, EventArgs e)
+        {
+            _inputNumber.Length = 0;
+            _isFirstOperandOver = false;
+            tbDisplay.Text = "";
+            _currentCalculationNode = _calculationTree = new CalculationNode();
+        }
+
         private void AppendInput(string input)
         {
             tbDisplay.AppendText(input);
@@ -103,30 +106,44 @@ namespace Calculator
                     _isFirstOperandOver = true;
                     _inputNumber.Length = 0;
                     var op = _operators[input];
-                    if(_calculationTree.Operator == null){
+                    if (_calculationTree.Operator == null)
+                    {
                         _calculationTree.Operator = op;
                     }
                     else
                     {
-                        _calculationTree = new CalculationNode()
+                        if ((input == "*" || input == "/") && (_calculationTree.Operator == _operators["+"] ||
+                                                               _calculationTree.Operator == _operators["-"]))
                         {
-                            Value1 = _calculationTree,
-                            Operator = op
-                        };
+                            _currentCalculationNode = _calculationTree.Value2 = new CalculationNode()
+                            {
+                                Value1 = _calculationTree.Value2,
+                                Operator = op
+                            };
+                        }
+                        else
+                        {
+                            _currentCalculationNode = _calculationTree = new CalculationNode()
+                            {
+                                Value1 = _calculationTree,
+                                Operator = op
+                            };
+                        }
                     }
+
                     break;
                 default:
                     if (Regex.IsMatch(input, @"[\.\d]+")) // 输入数字
                     {
                         _inputNumber.Append(input);
                         var operand = DigestNumber(_inputNumber.ToString());
-                        if (_calculationTree.Value1 == null || !_isFirstOperandOver)
+                        if (_currentCalculationNode.Value1 == null || !_isFirstOperandOver)
                         {
-                            _calculationTree.Value1 = operand;
+                            _currentCalculationNode.Value1 = operand;
                         }
                         else
                         {
-                            _calculationTree.Value2 = operand;
+                            _currentCalculationNode.Value2 = operand;
                         }
                     }
 
